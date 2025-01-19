@@ -1,7 +1,7 @@
 @import url('./fonts.css');
 
 :root {
-  --font-base: 'Inter';
+  --font-base: 'Space Mono';
   --primary: #dcf763;
   --secondary: #435058;
   --secondary-faint: #435058c7;
@@ -9,7 +9,7 @@
 }
 
 * {
-  font-family: var(--font-base), sans-serif;
+  font-family: var(--font-base), monospace;
   font-size-adjust: 0.53;
   line-height: 3ex;
   margin: 0;
@@ -45,10 +45,11 @@ h6 {
 
 input {
   width: 100%;
-  background-color: transparent;
+  background-color: #ffffff;
   box-sizing: border-box;
   outline: none;
   border: 1px solid var(--border);
+  /* border: none; */
   border-radius: 2ex;
   padding: 1ex 2ex;
   font-size: 0.875rem;
@@ -123,10 +124,12 @@ input {
       & > div > h1 {
         font-size: 2rem;
         color: var(--secondary);
+        font-style: italic;
       }
 
       & > div > p {
         color: var(--secondary-faint);
+        font-size: 0.75rem;
       }
     }
   }
@@ -138,6 +141,7 @@ input {
     font-size: 1.5rem;
     color: var(--secondary);
     text-align: center;
+    font-style: italic;
   }
 
   .layout {
