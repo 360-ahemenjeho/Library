@@ -49,7 +49,7 @@ input {
   box-sizing: border-box;
   outline: none;
   border: 1px solid var(--border);
-  border-radius: 1ex;
+  border-radius: 2ex;
   padding: 1ex 2ex;
   font-size: 0.875rem;
   color: var(--secondary);
@@ -66,7 +66,7 @@ input {
   border: 1px solid transparent;
   background-color: transparent;
   font-size: 0.875rem;
-  border-radius: 1ex;
+  border-radius: 2ex;
   padding: 1ex 3ex;
   cursor: pointer;
   text-decoration: none;
@@ -118,15 +118,14 @@ input {
       padding-bottom: 15%;
       display: flex;
       flex-direction: column;
-      align-items: start;
       gap: 1ex;
 
-      & > h1 {
+      & > div > h1 {
         font-size: 2rem;
         color: var(--secondary);
       }
 
-      & > p {
+      & > div > p {
         color: var(--secondary-faint);
       }
     }
@@ -134,7 +133,7 @@ input {
 }
 
 .books {
-  padding: 3rem 0;
+  padding: 3rem 0 5rem 0;
   & > h2 {
     font-size: 1.5rem;
     color: var(--secondary);
@@ -149,24 +148,28 @@ input {
   }
 
   .card {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
     border: 1px solid var(--border);
-    border-radius: 1ex;
-    padding: 1ex;
+    column-gap: 0.75rem;
+    border-radius: 2ex;
+    padding: 3ex 1ex 1ex 1ex;
 
     .title {
       color: var(--secondary);
       font-size: 1.1rem;
       font-weight: 700;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      margin-bottom: 0.75rem;
     }
 
     .author {
       font-size: 0.85rem;
       color: var(--secondary-faint);
       font-style: italic;
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
 
     span {
@@ -175,32 +178,25 @@ input {
       border: 1px solid var(--primary);
       display: block;
       padding: 0.5ex 1ex;
-      border-radius: 1ex;
+      border-radius: 2ex;
       font-weight: 700;
+      width: fit-content;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      margin-bottom: 0.75rem;
     }
 
-    .action {
+    .ph-fill {
+      --size: 40px;
+      height: var(--size);
+      width: var(--size);
+      border-radius: var(--size);
       display: flex;
       align-items: center;
-      gap: 1rem;
-      width: 100%;
-
-      .ph {
-        --size: 30px;
-        height: var(--size);
-        width: var(--size);
-        border-radius: var(--size);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--border);
-        color: var(--secondary);
-        cursor: pointer;
-      }
-
-      button {
-        flex: 1;
-      }
+      justify-content: center;
+      border: 1px solid var(--border);
+      color: var(--secondary);
+      cursor: pointer;
     }
   }
 }
