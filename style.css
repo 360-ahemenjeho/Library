@@ -53,11 +53,11 @@ input {
   border-radius: 2ex;
   padding: 1ex 2ex;
   font-size: 0.875rem;
-  color: var(--secondary);
+  color: var(--secondary-faint);
 
   &::placeholder {
     font-size: 0.875rem;
-    color: var(--secondary);
+    color: var(--secondary-faint);
   }
 }
 
