@@ -62,6 +62,7 @@ function setBook(i, title, author, pages, read) {
 
     // ADD EVENTS
     iconEl.addEventListener('click', () => deleteBook(i))
+    buttonEl.addEventListener('click', () => editBookStatus(i))
   }
 
   // UPDATE VALUES
@@ -89,7 +90,14 @@ function deleteBook(i) {
   }
 }
 
-function editBookStatus(i) {}
+function editBookStatus(i) {
+  const book = books[i]
+  const status = book.read
+  book.read = !status
+  const buttonEl = document.querySelector(`#book__${i} button`)
+  buttonEl.textContent = !status === true ? 'Unread 😂' : 'Read 😌'
+  buttonEl.setAttribute('class', !status === true ? 'btn sec' : 'btn pri')
+}
 
 addBookFormEl.addEventListener('submit', (e) => {
   e.preventDefault()
