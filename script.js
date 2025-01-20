@@ -1,7 +1,10 @@
-const books = [
+let books = [
   { title: 'Harry Potter', author: 'J. K. Rowling', pages: 900, read: false },
   { title: 'Hercules', author: 'Apollodorus', pages: 789, read: true }
 ]
+
+const addBookFormEl = document.querySelector('#addBookForm')
+const bookLayoutEl = document.querySelector('.books .layout')
 
 function Book({ title, author, pages, read }) {
   this.title = title
@@ -15,7 +18,6 @@ Book.prototype.toggleStatus = function (status) {
 }
 
 function renderBooks() {
-  const bookLayoutEl = document.querySelector('.books .layout')
   bookLayoutEl.innerHTML = ''
 
   if (books.length > 0) {
@@ -57,6 +59,9 @@ function setBook(i, title, author, pages, read) {
     cardEl.appendChild(titleEl)
     cardEl.appendChild(buttonEl)
     cardEl.appendChild(iconEl)
+
+    // ADD EVENTS
+    iconEl.addEventListener('click', () => deleteBook(i))
   }
 
   // UPDATE VALUES
@@ -73,5 +78,53 @@ function setBook(i, title, author, pages, read) {
 
   return cardEl
 }
+
+function deleteBook(i) {
+  const filteredBooks = books.filter((_, j) => j !== i)
+  books = filteredBooks
+  const bookEl = document.querySelector(`#book__${i}`)
+
+  if (bookEl) {
+    bookEl.remove()
+  }
+}
+
+addBookFormEl.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const readStatus = {
+    0: true,
+    1: false
+  }
+
+  let pages = document.querySelector('#pages').value
+  let author = document.querySelector('#author').value
+  let title = document.querySelector('#title').value
+
+  if (!pages || !author || !title) {
+    alert('Fields are required!')
+    return
+  }
+
+  if (isNaN(pages)) {
+    alert('Invalid page data!')
+    return
+  }
+
+  const read = readStatus[Math.floor(Math.random() * 2)]
+
+  const cardEl = setBook(books.length, title, author, pages)
+
+  books.push({
+    title,
+    author,
+    pages,
+    read
+  })
+
+  bookLayoutEl.appendChild(cardEl)
+  pages = ''
+  title = ''
+  author = ''
+})
 
 renderBooks()
