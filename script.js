@@ -89,6 +89,8 @@ function deleteBook(i) {
   }
 }
 
+function editBookStatus(i) {}
+
 addBookFormEl.addEventListener('submit', (e) => {
   e.preventDefault()
   const readStatus = {
