@@ -6,17 +6,6 @@ let books = [
 const addBookFormEl = document.querySelector('#addBookForm')
 const bookLayoutEl = document.querySelector('.books .layout')
 
-function Book({ title, author, pages, read }) {
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.read = read
-}
-
-Book.prototype.toggleStatus = function (status) {
-  this.read = !status
-}
-
 function renderBooks() {
   bookLayoutEl.innerHTML = ''
 
@@ -132,9 +121,6 @@ addBookFormEl.addEventListener('submit', (e) => {
   })
 
   bookLayoutEl.appendChild(cardEl)
-  pages = ''
-  title = ''
-  author = ''
 })
 
 renderBooks()
